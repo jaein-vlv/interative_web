@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      @keyframes spaceship-ani {
+        /* 시작점은 안써줘도 됨 */
+        /* 종료 지점 작성, to, 100% */
+        to {
+          background-position: -437.5px 0;
+        }
+      }
+      .spaceship {
+        width: 62.5px;
+        height: 164px;
+        /* background 사이즈는 계산이 빠른쪽을 써주고 나머진 auto로 설정해도됨 */
+        background: url("images/fire2.png") no-repeat 0 0 / auto 164px;
+        animation: spaceship-ani 1s infinite steps(7);
+      }
+      /* gif는 검은배경일때 주변에 하얗게 깔끔하지 않는게 나옴, reverse같은 코드로 조작이 가능 */
+    </style>
+  </head>
+  <body>
+    <!-- 고해상도로 표현하기 위해 실제 이미지는 2배 큰 사이즈로 제작해둠 -->
+    <div class="spaceship"></div>
+  </body>
+</html>

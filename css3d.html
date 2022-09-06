@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .world {
+        /* vw, vh 창크기 */
+        width: 80vw;
+        height: 80vh;
+        background-color: yellow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* 3d공간, 눈에서의 거리같은 느낌.. */
+        /* perspective: 500px; */
+      }
+      .card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 150px;
+        /* font-size의 상대적인 사이즈 */
+        border-radius: 0.5em;
+        /* html 기준 1.5 */
+        font-size: 1.5rem;
+        background-color: red;
+        margin: 1em;
+        transition: 1s;
+        /* 눈에서가 아니라 동일하게 3d효과를 주려면 transform 안에.. */
+        /* perspective(500px) */
+        /* 변화가 있을예정일때 처음에 움직이지 않는 값으로 두면 브라우저가 렌더링할때 움직일 준비를 함  */
+        transform: rotateY(0deg);
+      }
+      .world:hover .card {
+        transform: rotateY(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- world는 3d공간 -->
+    <div class="world">
+      <div class="card">CARD</div>
+      <div class="card">CARD</div>
+      <div class="card">CARD</div>
+    </div>
+  </body>
+</html>

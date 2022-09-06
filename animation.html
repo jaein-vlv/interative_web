@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      @keyframes sample-ani {
+        /* 시작이 0% 끝 지점이 100% , %로 지점을 지정할 수 있음 */
+        0% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(300px, 0);
+        }
+        100% {
+          transform: translate(700px, 400px);
+        }
+      }
+      .box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+        border: 2px solid;
+        /* 2초 동안 keyframe 실행, 기본 등속도가 아니라 가속도임, 횟수 또는 무한대 */
+        /* animation: sample-ani 3s linear infinite alternate; */
+        /* 끝난지점에 있음 */
+        animation: sample-ani 3s linear forwards;
+      }
+      .box:hover {
+        animation-play-state: paused;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 방향전환 keyframe : transition과 차이점 -->
+    <h1>Animation</h1>
+    <div class="box">BOX</div>
+  </body>
+</html>

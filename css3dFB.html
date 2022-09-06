@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .world {
+        /* vw, vh 창크기 */
+        width: 80vw;
+        height: 80vh;
+        background-color: yellow;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* 3d공간, 눈에서의 거리같은 느낌.. */
+        /* perspective: 500px; */
+      }
+      .card {
+        position: relative;
+        width: 100px;
+        height: 150px;
+
+        margin: 1em;
+        transition: 1s;
+        /* 눈에서가 아니라 동일하게 3d효과를 주려면 transform 안에.. */
+        /* perspective(500px) */
+        /* 변화가 있을예정일때 처음에 움직이지 않는 값으로 두면 브라우저가 렌더링할때 움직일 준비를 함  */
+        transform: rotateY(0deg);
+        /* 3d효과는 엘리먼트를 거치면서 전달이 다 안되기 떄문에 거치는 엘리먼트에 아래 옵션을 줌 */
+        /* IE에서 지원하지 않음 */
+        transform-style: preserve-3d;
+        /* 돌아가는  기준점*/
+        transform-origin: left;
+      }
+      .card-side {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.5em;
+        font-size: 1.5rem;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        /* safari에서 webkit 접두어 필요 */
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+      }
+      .card-side-front {
+        z-index: 1;
+        background: white;
+      }
+      .card-side-back {
+        background: red;
+        /* 180도 돌려둠*/
+        transform: rotateY(180deg);
+      }
+      .world:hover .card {
+        transform: rotateY(-180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- world는 3d공간 -->
+    <div class="world">
+      <div class="card">
+        <div class="card-side card-side-front">F</div>
+        <div class="card-side card-side-back">B</div>
+      </div>
+    </div>
+  </body>
+</html>
