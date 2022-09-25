@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event 2</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/event_2.css" />
+  </head>
+  <body>
+    <div class="stage">
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+      <div class="ilbuni"></div>
+    </div>
+    <script>
+      // (function () {
+      //   const ilbuniGroup = document.querySelectorAll(".ilbuni");
+      //   // console.log(ilbuniGroup);
+      //   const stage = document.querySelector(".stage");
+      //   function clickHander(e) {
+      //     // console.log(this);
+      //     // stage.removeChild(this);
+      //     console.log(this.parentNode);
+      //     this.parentNode.removeChild(this);
+      //   }
+
+      //   for (let i = 0; i < ilbuniGroup.length; i++) {
+      //     ilbuniGroup[i].addEventListener("click", clickHander);
+      //   }
+      // })();
+
+      // 각 element마다 이벤트 객체를 생성하는 것은 성능 저하
+      // 이벤트 위임
+      (function () {
+        const stage = document.querySelector(".stage");
+        function clickHander(e) {
+          console.log(e.target.classList);
+          if (e.target.classList.contains("ilbuni")) {
+            stage.removeChild(e.target);
+          }
+        }
+
+        stage.addEventListener("click", clickHander);
+      })();
+    </script>
+  </body>
+</html>
