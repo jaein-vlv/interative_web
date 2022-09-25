@@ -1,0 +1,2 @@
+// var 키워드 변수의 scope(유효범위)는 function
+// let, const 키워드 변수의 scope(유효범위)는 block
