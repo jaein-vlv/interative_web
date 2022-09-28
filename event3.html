@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이벤트 위임</title>
+    <style>
+      .btn-label {
+        /* pointer-events: none; */
+      }
+      .icon {
+        /* pointer-events: none; */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <button class="menu-btn" data-value="1">
+        <img class="icon" src="../images/ilbuni_1.png" />
+        <span class="btn-label">일분이1</span>
+      </button>
+      <button class="menu-btn" data-value="2">
+        <img class="icon" src="../images/ilbuni_2.png" />
+        <span class="btn-label">일분이2</span>
+      </button>
+      <button class="menu-btn" data-value="3">
+        <img class="icon" src="../images/ilbuni_3.png" />
+        <span class="btn-label">일분이3</span>
+      </button>
+    </div>
+    <script>
+      // const btns = document.querySelectorAll(".menu-btn");
+      // console.log(btns);
+
+      // function clickBtnHandler() {
+      //   console.log(this);
+      // }
+      // for (let i = 0; i < btns.length; i++) {
+      //   btns[i].addEventListener("click", clickBtnHandler); //메모리 점유
+      // }
+
+      // 부모 엘리먼트에 이벤트 위임!
+      // 이벤트 위임의 또 하나의 장점
+      // 무한 스크롤, 동적으로 엘리먼트 생성시 부모 엘리먼트에 이벤트 리스너가 있기 때문에 코드가 정상 동작한다
+      const menu = document.querySelector(".menu");
+      function clickBtnHandler(e) {
+        console.log(e.target);
+        console.log(e.target.dataset);
+        let el = e.target;
+        while (!el.classList.contains("menu-btn")) {
+          el = el.parentNode;
+          if (el.nodeName === "BODY") {
+            el = null;
+            return;
+          }
+        }
+        console.log(el.dataset.value);
+      }
+      menu.addEventListener("click", clickBtnHandler);
+    </script>
+  </body>
+</html>
