@@ -76,12 +76,12 @@
       .door:nth-child(3) .door-body {
         background: rgba(0, 0, 255, 0.7);
       }
-      .door:hover .door-body {
+      .door-opened .door-body {
         /* 회전체 자체에 perspective를 사용하면 시점 차이가 없어짐 */
         /* 부모에 perspective를 사용하면 시점에 따라 좀씩 달라짐 */
         transform: perspective(800px) rotateY(-120deg);
       }
-      .door:hover .ilbuni {
+      .door-opened .ilbuni {
         transform: translate3d(00, 0, 0);
       }
     </style>
@@ -107,5 +107,16 @@
         <div class="door-body"></div>
       </div>
     </div>
+    <script>
+      (function () {
+        const stageEl = document.querySelector(".stage");
+        function doorHandler(e) {
+          const targetEl = e.target;
+          if (targetEl.classList.contains("door-body"))
+            targetEl.parentNode.classList.add("door-opened");
+        }
+        stageEl.addEventListener("click", doorHandler);
+      })();
+    </script>
   </body>
 </html>
