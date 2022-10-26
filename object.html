@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Object</h1>
+
+    <script>
+      // const person = {};
+      // // 속성, property
+      // person.name = "일분이";
+      // person.age = 10;
+      // // 메소드, method
+      // // javascript 특성, 함수도 값
+      // person.introduce = function () {
+      //   console.log("안녕하세요? 저는 일분이 이고 나이는 10살이에요.");
+      // };
+      // person.introduce();
+
+      // const person = {
+      //   name: "일분이",
+      //   age: 10,
+      //   introduce: function () {
+      //     // 그냥 name 이 에러가 안난 이유는 => window객체에 name이 있기 때문에 age만 에러남
+      //     // this는 메서드를 실행한 주체 객체를 가르키고 있음
+      //     console.log(this);
+      //     console.log(
+      //       `안녕하세요? 저는 ${this.name}이 이고 나이는 ${this.age}살이에요.`
+      //     );
+      //   },
+      // };
+
+      // const person2 = {
+      //   name: "이분이",
+      //   age: 8,
+      //   introduce: function () {
+      //     console.log(
+      //       `안녕하세요? 저는 ${this.name}이 이고 나이는 ${this.age}살이에요.`
+      //     );
+      //   },
+      // };
+
+      // person.introduce();
+      // person2.introduce();
+
+      // function foo() {
+      //   // windoww 전역객체
+      //   console.log(this);
+      // }
+      // foo();
+
+      // 생성자 constructor 함수
+      function Person(name, age) {
+        this.name = name;
+        this.age = age;
+
+        // 각 인스턴스가 개별적으로 introduce를 갖게 된다 => 메모리 낭비
+        // this.introduce = function () {
+        //   console.log(
+        //     `안녕하세요? 저는 ${this.name}이 이고 나이는 ${this.age}살이에요.`
+        //   );
+        // };
+      }
+      Person.prototype.introduce = function () {
+        console.log(
+          `안녕하세요? 저는 ${this.name}이 이고 나이는 ${this.age}살이에요.`
+        );
+      };
+      // 인스턴스
+      // new 키워드를 붙이면 생성자 함수 => this가 window 객체가 아니게 된다
+      const person1 = new Person("일분이", 10);
+      const person2 = new Person("이분이", 8);
+
+      person1.introduce();
+      person2.introduce();
+
+      console.log(person1);
+    </script>
+  </body>
+</html>
