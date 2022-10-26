@@ -113,23 +113,28 @@
         // 현재 활성화된 아이템을 저장
         let openedEl;
 
+        function activate(elem) {
+          elem.classList.add("door-opened");
+          openedEl = elem;
+        }
+
+        function inactivate(elem) {
+          elem.remove("door-opened");
+        }
+
         function doorHandler(e) {
           const targetEl = e.target;
-          // 1. DOM 접근
-          // DOM에 접근하는 것은 연산 속도가 느림
-          // canvas 같은 경우는 접근 할 수 없음
-          // const openedEl = document.querySelector(".door-opened");
           if (openedEl) {
-            openedEl.classList.remove("door-opened");
+            inactivate(openedEl.classList);
           }
 
           if (targetEl.classList.contains("door-body")) {
-            targetEl.parentNode.classList.add("door-opened");
-            // 2. 아이템 저장
-            openedEl = targetEl.parentNode;
+            activate(targetEl.parentNode);
           }
         }
         stageEl.addEventListener("click", doorHandler);
+
+        activate(document.querySelector(".door:nth-child(2)"));
       })();
     </script>
   </body>
